@@ -90,11 +90,14 @@ class _CardCustomState extends State<CardCustom> {
                 GestureDetector(
                   child: Image.asset("assets/minus.png"),
                   onTap: () {
-                    setState(() {
-                      jumlah--;
-                      cMenu.tambahJumlah(widget.item.harga!);
-                      setCheckout(widget.item, catatanController.text, jumlah);
-                    });
+                    if (jumlah > 0) {
+                      setState(() {
+                        jumlah--;
+                        cMenu.kurangJumlah(widget.item.harga!);
+                        setCheckout(
+                            widget.item, catatanController.text, jumlah);
+                      });
+                    }
                   },
                 ),
                 SizedBox(
